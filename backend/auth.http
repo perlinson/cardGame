@@ -1,0 +1,16 @@
+POST http://localhost:8080/api/auth/signin
+
+{
+  "email": "test@test.com",
+"fullname": "perlinson",
+"password": "123456",
+}
+
+
+
+POST http://localhost:8080/api/auth/login
+
+{
+  "email": "test@test.com",
+"password": "1234564",
+}
