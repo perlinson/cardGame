@@ -1,110 +1,75 @@
-<script>
-export default {
-  props: {
-    imgSrc: {
-      type: String,
-      default: 'obelisk.png',
-    },
-    alt: {
-      type: String,
-      default: 'images',
-    },
-  },
-}
-</script>
 <template>
-  <div class="card">
-    <div class="imgBx">
-      <img :src="imgSrc" :alt="alt" />
-    </div>
-    <div class="details">
-      <slot name="details">
-        <h2>SomeOne Famous<br /><span>Director</span></h2>
-      </slot>
+  <div class="c-card">
+    <div class="c-card-item">
+      <div class="c-card-item__inner" :class="status">
+        <figure class="c-card-front">
+          <img :src="src" :alt="name">
+          <!-- figcaption>{{name}}</figcaption -->
+        </figure>
+        <figure class="c-card-back">
+          <img src="back.png" alt="">
+        </figure>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.box {
-  width: 1200px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: 15px;
-  margin: 0 auto;
+<script>
+export default {
+  props:{
+    name: String,
+    src: String,
+    status: String
+  },
+  methods: {
+    onClick() {
+    }
+  },
 }
-.card {
-  position: relative;
-  width: 300px;
-  height: 350px;
-  background: #fff;
-  margin: 0 auto;
-  border-radius: 11px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-.card:before,
-.card:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 11px;
-  background: #fff;
-  transition: 0.5s;
-  z-index: -1;
-}
-.card:hover:before {
-  transform: rotate(20deg);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-}
-.card:hover:after {
-  transform: rotate(10deg);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-}
-.card .imgBx {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  bottom: 10px;
-  right: 10px;
-  background: #222;
-  transition: 0.5s;
-  z-index: 1;
-}
-.card:hover .imgBx {
-  bottom: 80px;
-}
-.card .imgBx img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.card .details {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  height: 60px;
-  text-align: center;
-}
-.card .details h2 {
-  margin: 0;
-  padding: 0;
-  font-weight: 600;
-  font-size: 20px;
-  color: #777;
-  text-transform: uppercase;
-}
-.card .details h2 span {
-  font-weight: 500;
-  font-size: 16px;
-  color: #f38695;
-  display: block;
-  margin-top: 5px;
-}
+</script>
+
+<style lang="sass">
+.c-card
+  width: 100%
+.c-card-item
+  width: 100%
+  &__inner
+    position: relative
+    transition: transform 0.5s
+    transform-style: preserve-3d
+    // &:hover, &:focus
+    //   transform: rotateY(-180deg)
+    &.back
+      transform: rotateY(-180deg)
+    &.none
+      display: none
+.c-card-back, .c-card-front
+  border-radius: 4px
+  position: absolute
+  border: 1px solid #333
+  top: 0
+  left: 50%
+  backface-visibility: hidden
+.c-card-front
+  width: 100%
+  margin: 0
+  padding: 8px
+  transform: translateX(-50%)
+  figcaption
+    padding-top: 4px
+  img
+    max-width: 100%
+    width: 100%
+    border-radius: 4px
+    vertical-align: bottom
+.c-card-back
+  width: 100%
+  left: 50%
+  padding: 8px
+  transform: translateX(-50%) rotateY(180deg)
+  img
+    max-width: 100%
+    width: 100%
+    border-radius: 4px
+    vertical-align: bottom
 </style>

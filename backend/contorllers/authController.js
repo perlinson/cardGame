@@ -113,7 +113,6 @@ exports.getUser =  (req, res, next) => {
 
   res.status(200).json({
     user: {
-      id: loadUser._id,
       fullname: loadUser.fullname,
       email: loadUser.email
     }

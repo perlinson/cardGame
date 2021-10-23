@@ -7,10 +7,13 @@ POST http://localhost:8080/api/auth/signin
 }
 
 
-
+###
 POST http://localhost:8080/api/auth/login
 
 {
-  "email": "test@test.com",
-"password": "1234564",
+  "email": "perlinson_2008@163.com",
+"password": "123456",
 }
+
+###
+GET  http://localhost:8080/api/room/

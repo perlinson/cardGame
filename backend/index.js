@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser  = require('body-parser')
 const authRouter = require('./routes/auth')
+const roomRouter = require('./routes/room')
 const app = express()
 
 app.use(bodyParser.json());
@@ -28,3 +29,4 @@ mongoose.connect( uri).then((result) =>{
 
 
 app.use('/api/auth/',authRouter)
+app.use('/api/room/',roomRouter)

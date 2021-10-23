@@ -5,9 +5,7 @@
       <div class="battle-enemy-venue" :z-depth="5"></div>
     </div>
     <div class="battle-my">
-      <div class="battle-my-venue" :z-depth="5">
-        {{ number }}
-      </div>
+      <div class="battle-my-venue" :z-depth="5"></div>
       <div class="battle-my-hand" :z-depth="5"></div>
     </div>
     <div></div>
