@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="login">
+    <form @submit.prevent="login(loginData)">
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input
@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -35,17 +36,9 @@ export default {
     }
   },
   methods: {
-    async login() {
-      try {
-        const response = await this.$auth.loginWith('local', {
-          data: this.loginData,
-        })
-        this.$router.push('/')
-        console.log(response)
-      } catch (err) {
-        console.log(err)
-      }
-    },
+    ...mapActions({
+      login: 'user/login',
+    }),
   },
 }
 </script>

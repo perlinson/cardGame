@@ -40,9 +40,20 @@ export const actions = {
   async joinRoom({ commit }, room) {
     commit('showLoading')
     try {
-      await this.$axios.$get(`/api/room/${room._id}`).then((result) => {
-        this.$router.push({ path: '/startgame/' + response.id })
-      })
+      await this.$axios
+        .$patch(`/api/room/${room._id}`, {
+          players: [
+            room.data.players[0],
+            {
+              player2: {
+                player_name: localStorage.user_name
+              }
+            }
+          ]
+        })
+        .then((result) => {
+          this.$router.push({ path: '/startgame/' + room._id })
+        })
     } catch (err) {
       console.log(err)
     }
@@ -56,7 +67,7 @@ export const actions = {
         players: [
           {
             player1: {
-              player_name: 'playername'
+              player_name: localStorage.user_name
             }
           }
         ]

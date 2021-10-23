@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const bodyParser  = require('body-parser')
 const authRouter = require('./routes/auth')
 const roomRouter = require('./routes/room')
+const deckRouter = require('./routes/deck')
+const fileRouter = require('./routes/file')
 const app = express()
 
 app.use(bodyParser.json());
@@ -30,3 +32,5 @@ mongoose.connect( uri).then((result) =>{
 
 app.use('/api/auth/',authRouter)
 app.use('/api/room/',roomRouter)
+app.use('/api/deck/',deckRouter)
+app.use('/api/file/',fileRouter)

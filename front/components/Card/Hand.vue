@@ -1,6 +1,6 @@
 <template>
   <div class="c-hand">
-    <draggable :list="hand" class="list-group c-hand" group="field">
+    <draggable :list="hand" class="c-hand" group="field">
       <div v-for="(item, i) in hand" :key="i" class="c-hand__item">
         <CardArea
           :name="item.name"

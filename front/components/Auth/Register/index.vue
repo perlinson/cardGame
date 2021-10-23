@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="register">
+    <form @submit.prevent="register(registerData)">
       <div class="mb-3">
         <label for="fullname" class="form-label">Full Name</label>
         <input
@@ -34,6 +34,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -45,18 +46,9 @@ export default {
     }
   },
   methods: {
-    async register() {
-      try {
-        await this.$axios.$post('/api/auth/signin', {
-          fullname: this.registerData.fullname,
-          email: this.registerData.email,
-          password: this.registerData.password,
-        })
-        localStorage.setItem('user_name', this.fullname)
-      } catch (err) {
-        console.log(err)
-      }
-    },
+    ...mapActions({
+      register: 'user/register',
+    }),
   },
 }
 </script>

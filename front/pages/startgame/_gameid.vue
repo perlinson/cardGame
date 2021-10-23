@@ -28,5 +28,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+   watch: {
+      room() {
+        if (this.room.players.length !== 2) {
+          this.disable = false;
+        } else {
+          this.disable = true;
+        }
+      },
+      
+    }
+}
 </script>

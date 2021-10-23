@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 exports.postSignin = async (req, res, next) => {
   const { fullname, email, password } = req.body
   try {
-    const existUser = await UserModel.findOne({ email: email })
+    const existUser = await UserModel.findOne({ email: email, decks: [] })
     if (existUser) {
       const error = new Error(
         "Eamil already exist, please pick another email!"
@@ -80,7 +80,7 @@ exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    const user = await UserModel.findOne({ email: email });
+    const user = await UserModel.findOne({ email: email }).populate('decks');
 
     if (!user) {
       const error = new Error("user with this email not found!");
@@ -99,6 +99,7 @@ exports.postLogin = async (req, res, next) => {
     const token = jwt.sign({ email: loadUser.email }, process.env.SECRET_KEY, {
       expiresIn: "20m",
     });
+    console.log(loadUser)
     res.status(200).json({ token: token });
   } catch (err) {
     if (!err.statusCode) {

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const CardSchema = new mongoose.Schema(
   {
     cardType: { type: String, required: true },
@@ -29,4 +30,17 @@ CardSchema.methods.toJSONapi = function() {
   };
 };
 
-module.exports = mongoose.model('Card', CardSchema);
+const DeckSchema = new mongoose.Schema(
+  {
+    name :  { type: String, required: true }, 
+    list: [CardSchema]
+  },
+  { timestamps: true }
+);
+
+
+
+
+CardModel = mongoose.model('Card', CardSchema);
+DeckModel = mongoose.model('Deck', DeckSchema)
+module.exports = {CardModel, DeckModel}

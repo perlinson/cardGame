@@ -21,7 +21,7 @@
                 <nuxt-link
                   class="nav-link active"
                   aria-current="page"
-                  to="/auth/login"
+                  to="/login"
                   >Login</nuxt-link
                 >
               </li>
@@ -29,7 +29,7 @@
                 <nuxt-link
                   class="nav-link active"
                   aria-current="page"
-                  to="/auth/register"
+                  to="/register"
                   >Register</nuxt-link
                 >
               </li>
@@ -47,6 +47,15 @@
                   to="/profile"
                 >
                   Profile
+                </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link
+                  class="nav-link active"
+                  aria-current="page"
+                  to="/deck/builder"
+                >
+                  Deck
                 </nuxt-link>
               </li>
             </template>

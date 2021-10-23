@@ -13,6 +13,18 @@ exports.listRoom = async (req, res, next) => {
     next(err);
   }
 };
+exports.joinRoom = async (req, res, next) => {
+  try {
+    const room = await RoomModel.findByIdAndUpdate(req.params.room_id, req.body);
+    console.log(room)
+    res.status(200).json({ data: room });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
 
 exports.createRoom = async (req, res, next) => {
   const { room_name, players } = req.body;

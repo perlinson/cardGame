@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ingame-bg">
     <CardMyField />
   </div>
 </template>
@@ -8,4 +8,12 @@
 export default {}
 </script>
 
-<style></style>
+<style>
+
+
+.ingame-bg {
+  background-image: url('https://cdn-www.bluestacks.com/bs-images/yu-gi-oh_banner.jpg');
+  background-size: contain;
+  min-height: 626px;
+}
+</style>
