@@ -1,37 +1,25 @@
 const FileModel = require("../models/FileModel");
-const jwt = require("jsonwebtoken");
 
 exports.listFiles = async (req, res, next) => {
-  let files = await FileModel.create([
-    {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄",
-    },
-    {
-      date: "2016-05-04",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1517 弄",
-    },
-    {
-      date: "2016-05-01",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1519 弄",
-    },
-    {
-      date: "2016-05-03",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1516 弄",
-    },
-  ]);
+  let files = await FileModel.find({})
 
   res.status(200).json({ data: files });
-  // try {
-  //   res.status(200).json({ data: files });
-  // } catch (err) {
-  //   if (!err.statusCode) {
-  //     err.statusCode = 500;
-  //   }
-  //   next(err);
-  // }
+
+};
+
+exports.upload = async (req, res, next) => {
+  try {
+    // const { title, description } = req.body;
+    const { path, mimetype } = req.file;
+
+    console.log(path,mimetype);
+    const file = new FileModel({
+      file_path: path,
+      file_mimetype: mimetype,
+    });
+    await file.save();
+    res.send("file uploaded successfully.");
+  } catch (error) {
+    res.status(400).send("Error while uploading file. Try again later.");
+  }
 };

@@ -5,6 +5,7 @@ const authRouter = require('./routes/auth')
 const roomRouter = require('./routes/room')
 const deckRouter = require('./routes/deck')
 const fileRouter = require('./routes/file')
+const employeeRouter = require('./routes/employee')
 const app = express()
 
 app.use(bodyParser.json());
@@ -34,3 +35,4 @@ app.use('/api/auth/',authRouter)
 app.use('/api/room/',roomRouter)
 app.use('/api/deck/',deckRouter)
 app.use('/api/file/',fileRouter)
+app.use('/api/employee/',employeeRouter)

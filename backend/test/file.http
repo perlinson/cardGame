@@ -1,0 +1,8 @@
+
+POST https://localhost:8080/api/file/upload
+------WebKitFormBoundarydbcWIAA3O4Cn86gr
+Content-Disposition: form-data; name="file"; filename="image1.jpg"
+Content-Type: image/jpeg
+
+
+------WebKitFormBoundarydbcWIAA3O4Cn86gr--

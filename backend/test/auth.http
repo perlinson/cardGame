@@ -17,3 +17,6 @@ POST http://localhost:8080/api/auth/login
 
 ###
 GET  http://localhost:8080/api/room/
+
+
+###

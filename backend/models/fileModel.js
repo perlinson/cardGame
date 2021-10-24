@@ -4,12 +4,26 @@ const { Schema } = mongoose;
 
 const FileSchema = new Schema(
   {
-    date: { type: String, required: true },
-    name: { type: String, required: true },
-    address: { type: String, required: true },
+    title: {
+      type: String,
+      trim: true
+    },
+    description: {
+      type: String,
+      trim: true
+    },
+    file_path: {
+      type: String,
+      required: true
+    },
+    file_mimetype: {
+      type: String,
+      required: true
+    }
   },
-
-  { timestamps: true }
+  {
+    timestamps: true
+  }
 );
 
 module.exports = mongoose.model("File", FileSchema);
